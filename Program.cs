@@ -1,8 +1,20 @@
 ﻿using System;
 
-Console.WriteLine("Welcome to the Enthusiastic Moose Simulator!\n--------------------------------------------\n");
 
-void MooseSays(string message){
+void Main()
+{
+    Console.WriteLine("Welcome to the Enthusiastic Moose Simulator!\n--------------------------------------------\n");
+    MooseSays("H I, I'M  E N T H U S I A S T I C !");
+    MooseSays("I really am enthusiastic!");
+    Console.WriteLine();
+    BuildQuestion("Is Canada real?", "I'm not sure whether to believe you or not...", "I  K N E W  I T !");
+    BuildQuestion("Are you enthusiastic?", "Yay! I am, too!!!", "You should try it!");
+    BuildQuestion("Do you love C# yet???", "Way to suck up to your instructor!", "You will.... yes, in time, the power...");
+    BuildQuestion("Do you want to know a secret?", "ME TOO!!! I love secrets! Tell me one!", "Oh, no...secrets are the best, I love to share them!");
+}
+
+void MooseSays(string message)
+{
     Console.WriteLine($@"
                                        _.--^^^--,
                                     .'          `\
@@ -33,30 +45,33 @@ void MooseSays(string message){
     ");
 }
 
-bool MooseAsks(string question){
+bool MooseAsks(string question)
+{
     Console.Write($"{question} (Y/N): ");
     string answer = Console.ReadLine().ToLower();
 
-    while (answer != "y" && answer != "n"){
+    while (answer != "y" && answer != "n")
+    {
         Console.Write($"{question} (Y/N):");
         answer = Console.ReadLine().ToLower();
     }
-    if(answer == "y"){
+    if (answer == "y")
+    {
         return true;
     }
-    else{
+    else
+    {
         return false;
     }
 }
 
-MooseSays("H I, I'M  E N T H U S I A S T I C !");
-MooseSays("I really am enthusiastic!");
-
-bool isTrue = MooseAsks("Is Canada Real?");
-
-if(isTrue){
-    Console.WriteLine("Really? It seems unlikely");
+void BuildQuestion(string question, string trueResponse, string falseResponse){
+        if(MooseAsks(question)){
+            MooseSays(trueResponse);
+        }
+        else{
+            MooseSays(falseResponse);
+        }
 }
-else{
-    Console.WriteLine("I   K N E W   I T !");
-}
+
+Main();
